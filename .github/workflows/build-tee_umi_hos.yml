@@ -42,7 +42,6 @@ jobs:
           cd hyperos_port
           sudo bash port.sh "${{ github.event.inputs.STOCK_URL }}" "${{ github.event.inputs.PORT_URL }}" | tee HyperOS_portlog.log
       - name: 4.上传
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
           path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/*.zip"
-          compression-level: 0
