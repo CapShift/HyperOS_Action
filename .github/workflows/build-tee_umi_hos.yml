@@ -1,4 +1,4 @@
-name: build_umi_hos_Fer1d
+name: build-tee_umi_hos_Fer1d
 on:
   workflow_dispatch:
     inputs:
