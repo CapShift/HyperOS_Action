@@ -44,6 +44,6 @@ jobs:
       - name: 4.上传
         uses: actions/upload-artifact@v4
         with:
-          name:  green $(pwd)/out/${os_type}_${device_code}_${port_rom_version}_${hash}_${port_android_version}_${port_rom_code}_${pack_timestamp}_${pack_type}.zip
+          name:   build_umi_hos_Fer1d
           path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/*.zip"
           compression-level:  ""
