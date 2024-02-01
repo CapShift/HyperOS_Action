@@ -1,1 +1,48 @@
+name: build_umi_hos_Fer1d
+on:
+  workflow_dispatch:
+    inputs:
+      STOCK_URL:
+        description: "待操作的底包/xiaomi.eu底包下载地址"
+        required: true
+        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/V14.0.4.0.TJBCNXM/miui_UMI_V14.0.4.0.TJBCNXM_23fc5ef4ee_13.0.zip?t=1706728803&s=7ffe68e09ea6bb89f743319b632a6ac7'
+      PORT_URL:
+        description: "待操作的移植包下载地址"
+        required: true
+        
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: 最大化构建环境
+        uses: easimon/maximize-build-space@master
+        with:
+          swap-size-mb: 10240
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+      - name: 检出仓库文件
+        uses: actions/checkout@main
+      - name: 1.准备环境
+        run: |
+          sudo apt install aria2 python3 busybox zip tar apktool unzip p7zip-full openjdk-8-jre zipalign zstd bc xmlstarlet android-sdk-libsparse-utils
+          sudo apt --fix-broken install
+          sudo apt update --fix-missing
+          pip3 install --upgrade pip
+          pip3 install pycryptodome requests setuptools docopt
+          curl https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone/
+      - name: 2.克隆仓库
+        run: |
+          git clone --depth 1 https://github.com/Fer1d/hyperos_port hyperos_port
+      - name: 3. 开始移植
+        run: |
+          cd hyperos_port
+          sudo bash port.sh "${{ github.event.inputs.STOCK_URL }}" "${{ github.event.inputs.PORT_URL }}" | tee HyperOS_portlog.log
+      - name: 4.上传
+        uses: actions/upload-artifact@v4
+        with:
+          name: HyperOS_uim
+          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/*.zip"
+          compression-level: 0
 
