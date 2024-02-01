@@ -35,6 +35,8 @@ jobs:
       - name: 2.克隆仓库
         run: |
           git clone --depth 1 https://github.com/Fer1d/hyperos_port hyperos_port
+          cd hyperos_port
+          sudo ./setup.sh
       - name: 3. 开始移植
         run: |
           cd hyperos_port
@@ -45,4 +47,3 @@ jobs:
           name: HyperOS_uim
           path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/*.zip"
           compression-level: 0
-
