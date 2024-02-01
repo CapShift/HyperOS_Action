@@ -46,4 +46,4 @@ jobs:
         with:
           name:   build_umi_hos_Fer1d
           path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/*.zip"
-          compression-level:  ""
+          compression-level: 0
