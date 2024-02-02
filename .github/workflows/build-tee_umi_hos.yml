@@ -51,7 +51,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ github.event.inputs.name }}
-          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/*.zip"
-          compression-level: 0
-
-
+          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/"
+      - name: 5.上传Super
+        uses: actions/upload-artifact@v4
+        with:
+          name: super
+          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/build/portrom/images/super.img"
+      - name: 5.上传Super.zst
+        uses: actions/upload-artifact@v4
+        with:
+          name: super.zst
+          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/build/portrom/images/super.zst"
