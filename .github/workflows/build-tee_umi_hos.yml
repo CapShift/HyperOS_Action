@@ -11,7 +11,7 @@ on:
         required: true
     
       name:
-        description: '版本'
+        description: '版本号'
         default: ''
         required: true
         type: string
@@ -47,18 +47,14 @@ jobs:
         run: |
           cd hyperos_port
           sudo bash port.sh "${{ github.event.inputs.STOCK_URL }}" "${{ github.event.inputs.PORT_URL }}" | tee HyperOS_portlog.log
-      - name: 4.上传
+      - name: 4.上传ROM
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ github.event.inputs.name }}
-          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/"
-      - name: 5.上传Super
-        uses: actions/upload-artifact@v4
-        with:
-          name: super
-          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/build/portrom/images/super.img"
+          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/Workse"
+          compression-level: 9
       - name: 5.上传Super.zst
         uses: actions/upload-artifact@v4
         with:
-          name: super.zst
-          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/build/portrom/images/super.zst"
+          name: super
+          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/Workse/super.zst"
