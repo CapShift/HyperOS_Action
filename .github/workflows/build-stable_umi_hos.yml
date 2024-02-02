@@ -1,4 +1,4 @@
-name: build_umi_hos_Fer1d
+name: build_umi_hos
 on:
   workflow_dispatch:
     inputs:
