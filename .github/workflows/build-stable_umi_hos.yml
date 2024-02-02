@@ -34,7 +34,7 @@ jobs:
           mkdir -p ~/.config/rclone/
       - name: 2.克隆仓库
         run: |
-          git clone --depth 1 https://github.com/Fer1d/hyperos_port hyperos_port
+          git clone --depth 1 https://github.com/Fer1d/HyperOS_Action hyperos_port
           cd hyperos_port
           sudo ./setup.sh
       - name: 3. 开始移植
