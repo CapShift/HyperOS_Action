@@ -47,6 +47,11 @@ jobs:
         run: |
           cd hyperos_port
           sudo bash port.sh "${{ github.event.inputs.STOCK_URL }}" "${{ github.event.inputs.PORT_URL }}" | tee HyperOS_portlog.log
+          touch info.md
+          echo "提交日期：$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')" >> info.md
+          echo "移植底包链接：${{ github.event.inputs.STOCK_URL }}" >> info.md
+          echo "移植机型链接：${{ github.event.inputs.PORT_URL }}" >> info.md
+          echo "tosasitill made with love 0202 & 0227" >> info.md
       - name: 4.上传ROM
         uses: actions/upload-artifact@v4
         with:
@@ -58,3 +63,16 @@ jobs:
         with:
           name: super
           path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/Workse/super.zst"
+      - name: 6.发布
+        uses: ncipollo/release-action@v1.13.0
+        with:
+          artifacts: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/HyperOS_portlog.log"
+          bodyFile: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/info.md"
+          tag: "OUTPUT_${{ env.BUILD_TIME }}_${{ github.run_id }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 7.上传移植LOG
+        uses: actions/upload-artifact@v4
+        with:
+          name: HyperOS-PortLOG
+          path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/HyperOS_portlog.log"
+          compression-level: 9
