@@ -63,3 +63,5 @@ jobs:
         with:
           artifacts: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/*.zip"
           bodyFile: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/HyperOS_portlog.log"
+          tag: "OUTPUT_${{ env.BUILD_TIME }}_${{ github.run_id }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
