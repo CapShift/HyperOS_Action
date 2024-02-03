@@ -58,3 +58,8 @@ jobs:
         with:
           name: super
           path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/Workse/super.zst"
+      - name: 5.发布
+        uses: ncipollo/release-action@v1.13.0
+        with:
+          artifacts: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/*.zip"
+          bodyFile: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/HyperOS_portlog.log"
