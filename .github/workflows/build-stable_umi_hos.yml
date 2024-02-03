@@ -1,4 +1,4 @@
-name: build_stable_umi_hos
+name: build_test_umi_hos
 on:
   workflow_dispatch:
     inputs:
@@ -9,7 +9,13 @@ on:
       PORT_URL:
         description: "待操作的移植包下载地址"
         required: true
-        
+    
+      name:
+        description: '版本号'
+        default: ''
+        required: true
+        type: string
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -41,9 +47,14 @@ jobs:
         run: |
           cd hyperos_port
           sudo bash port.sh "${{ github.event.inputs.STOCK_URL }}" "${{ github.event.inputs.PORT_URL }}" | tee HyperOS_portlog.log
-      - name: 4.上传
+      - name: 4.上传ROM
         uses: actions/upload-artifact@v4
         with:
-          name:   build_umi_hos_Fer1d
-          path: "/home/runner/work/hyperos_port/hyperos_port/hyperos_port/out/*.zip"
-          compression-level: 0
+          name: build-${{ github.event.inputs.name }}
+          path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/Workse"
+          compression-level: 9
+      - name: 5.上传Super.zst
+        uses: actions/upload-artifact@v4
+        with:
+          name: super
+          path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/Workse/super.zst"
