@@ -51,8 +51,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ github.event.inputs.name }}
-          path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/"
-          compression-level: 0
+          path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/Workse/"
+          compression-level: 9
       - name: 5.上传Super.zst
         uses: actions/upload-artifact@v4
         with:
