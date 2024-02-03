@@ -74,5 +74,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: HyperOS-PortLOG
-          path: "/home/runner/work/HyperOS_Action_builder/HyperOS_Action_builder/hyperos_port/HyperOS_portlog.log"
+          path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/HyperOS_portlog.log"
           compression-level: 9
