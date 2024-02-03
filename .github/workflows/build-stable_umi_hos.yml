@@ -12,7 +12,7 @@ on:
     
       name:
         description: '版本号'
-        default: 'OS1.0'
+        default: 'miui-UMI-OS1.0'
         required: true
         type: string
 
