@@ -12,7 +12,7 @@ on:
     
       name:
         description: '版本号'
-        default: 'test-OS1.0'
+        default: 'test-UMI-OS1.0'
         required: true
         type: string
 
