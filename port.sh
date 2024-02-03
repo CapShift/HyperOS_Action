@@ -1164,3 +1164,7 @@ else
     busybox unix2dos out/Workse/flash_update.bat
     busybox unix2dos out/Workse/flash_and_format.bat
     fi
+    
+    find out/Workse |xargs touch
+    pushd out/Workse/ >/dev/null || exit
+    popd >/dev/null || exit
