@@ -1163,21 +1163,3 @@ else
 
     busybox unix2dos out/Workse/flash_update.bat
     busybox unix2dos out/Workse/flash_and_format.bat
-
-fi
-
-find out/Workse |xargs touch
-pushd out/Workse/ >/dev/null || exit
-zip -r ${os_type}_${device_code}_${port_rom_version}.zip ./*
-mv ${os_type}_${device_code}_${port_rom_version}.zip ../
-popd >/dev/null || exit
-pack_timestamp=$(date +"%m%d%H%M")
-hash=$(md5sum out/${os_type}_${device_code}_${port_rom_version}.zip |head -c 10)
-if [[ $pack_type == "EROFS" ]];then
-    pack_type="ROOT_"${pack_type}
-    yellow "检测到打包类型为EROFS,请确保官方内核支持，或者在devices机型目录添加有支持EROFS的内核，否者将无法开机！" "EROFS filesystem detected. Ensure compatibility with the official boot.img or ensure a supported boot_tv.img is placed in the device folder."
-fi
-mv out/${os_type}_${device_code}_${port_rom_version}.zip out/${os_type}_${device_code}_${port_rom_version}_${hash}_${port_android_version}_${port_rom_code}_${pack_timestamp}_${pack_type}.zip
-green "移植完毕" "Porting completed"    
-green "输出包路径：" "Output: "
-green "$(pwd)/out/${os_type}_${device_code}_${port_rom_version}_${hash}_${port_android_version}_${port_rom_code}_${pack_timestamp}_${pack_type}.zip"
