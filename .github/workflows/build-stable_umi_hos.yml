@@ -47,7 +47,7 @@ jobs:
         run: |
           cd hyperos_port
           sudo bash port.sh "${{ github.event.inputs.STOCK_URL }}" "${{ github.event.inputs.PORT_URL }}" | tee HyperOS_portlog.log
-      - name: 4.上传文件夹
+      - name: 4.上传Rom
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ github.event.inputs.name }}
