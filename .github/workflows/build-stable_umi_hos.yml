@@ -1,4 +1,4 @@
-name: build_stable umi_hos
+name: build_stable_umi_hos
 on:
   workflow_dispatch:
     inputs:
