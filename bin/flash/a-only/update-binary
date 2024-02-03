@@ -78,28 +78,6 @@ if [ "$isDamaged" != "" ];then
 	exit 1
 fi
 
-if [ "$AdbSideLoad" = "" ]; then
-	ui_print "- 正在校验MD5 - Verifying MD5 checksum."
-	ui_print " "
-	RealMd5=$(echo $ZIPNAME | cut -d '_' -f 4)
-	ui_print " - ROM正确的MD5值为 - The correct MD5 value: $RealMd5"
-	ui_print " "
-	LocalMd5=$(md5sum $ZIPFILE | head -c10)
-	ui_print "- ROM经校验MD5值为 - The real MD5 value: $LocalMd5"
-	ui_print " "
-	if [ "$RealMd5" != "$LocalMd5" ]; then
-		ui_print "- MD5校验不通过，终止刷机"
-		ui_print "- MD5 verification failed. Abort the flashing process."
-		ui_print " "
-		exit 1
-	fi
-	ui_print "- MD5校验通过 - MD5 verification successful."
-	ui_print " "
-else
-	ui_print "- ADB Sideload 跳过MD5校验"
-	ui_print "- Skip MD5 verification for ADB Sideload."
-	ui_print " "
-fi
 ui_print " "
 ui_print "- 开始刷机 - Flashing process started."
 ui_print " "
