@@ -1163,3 +1163,4 @@ else
 
     busybox unix2dos out/Workse/flash_update.bat
     busybox unix2dos out/Workse/flash_and_format.bat
+    fi
