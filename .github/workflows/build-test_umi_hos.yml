@@ -12,7 +12,7 @@ on:
     
       name:
         description: '版本号'
-        default: 'test-UMI-OS1.0'
+        default: 'test_UMI_OS1.0'
         required: true
         type: string
 
@@ -55,7 +55,7 @@ jobs:
       - name: 4.上传ROM
         uses: actions/upload-artifact@v4
         with:
-          name: build-${{ github.event.inputs.name }}
+          name: miui_${{ github.event.inputs.name }}
           path: "/home/runner/work/HyperOS_Action/HyperOS_Action/hyperos_port/out/Workse"
           compression-level: 9
       - name: 5.上传Super.zst
