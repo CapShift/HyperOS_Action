@@ -5,11 +5,11 @@ on:
       STOCK_URL:
         description: "待操作的底包/xiaomi.eu底包下载地址"
         required: true
-        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/V14.0.4.0.TJBCNXM/miui_UMI_V14.0.4.0.TJBCNXM_23fc5ef4ee_13.0.zip?t=1706728803&s=7ffe68e09ea6bb89f743319b632a6ac7'
+        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/V14.0.4.0.TJBCNXM/miui_UMI_V14.0.4.0.TJBCNXM_23fc5ef4ee_13.0.zip'
       PORT_URL:
         description: "待操作的移植包下载地址"
         required: true
-    
+        default: 'https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/'
       name:
         description: '版本号'
         default: 'test_UMI_OS1.0'
